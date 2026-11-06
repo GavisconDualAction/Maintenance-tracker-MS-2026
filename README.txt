@@ -1,31 +1,24 @@
-MAINTENANCE TRACKER — INSTALLATION
+Maintenance Tracker v1.1
 
-This is a Progressive Web App (PWA). It is designed for iPhone Safari and does not require a Mac.
+Replace these four files in the root of your GitHub repository:
+- app.js
+- index.html
+- styles.css
+- sw.js
 
-IMPORTANT
-- The app stores tasks and completion history in the browser's local storage on this device.
-- Clearing Safari website data can erase the app's saved tasks. Export/backup is not yet included.
-- To install as a Home Screen app, the files must be hosted on an HTTPS website.
-- The app is not currently published to the App Store.
+Do not rename the files: the app references these exact filenames.
 
-EASIEST HOSTING METHOD: GITHUB PAGES
-1. On an iPhone or computer, create/sign in to a GitHub account at https://github.com
-2. Create a new public repository, for example: maintenance-tracker
-3. Upload all files in this ZIP to the repository's top level (not inside another folder).
-4. In the repository, open Settings → Pages.
-5. Under Build and deployment, choose Deploy from a branch.
-6. Select the main branch and /(root), then Save.
-7. Wait for GitHub Pages to publish. The site address will appear on the Pages settings screen.
-8. Open that HTTPS address in Safari on your iPhone.
-9. Tap Share → Add to Home Screen → Add.
+Version tracking:
+- The app footer displays v1.1.
+- Each source file is marked v1.1.
+- The service worker cache is maintenance-pwa-v1.1.
 
-USAGE
-- Tap Add task to create a task.
-- Choose an interval in days, weeks, months or years.
-- Set Last completed to the last date the task was actually done. For a task never done, use today's date.
-- Tap a task to view its details, completion count and history.
-- Tap Task complete to record today's date and start the next interval.
-- The dashboard shows remaining days or overdue days. The bar indicates progress through the current interval.
+Existing task data is preserved:
+- The localStorage key remains maintenance-tracker-v1.
+- Do not clear Safari website data or delete the existing Home Screen app data during the update.
 
-DATE BEHAVIOUR
-Monthly and yearly intervals use calendar arithmetic. If a target month does not contain the original day (for example, adding one month to 31 January), the due date is the last day of the target month.
+Changes:
+- Removed the "Due soon" status and filter.
+- Tasks with a due date today or in the future show "On track".
+- Past-due tasks show "Overdue".
+- The days remaining/overdue counter and progress bar remain.
