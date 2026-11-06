@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#172554">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="Maintenance">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="apple-touch-icon" href="icon-192.png">
+<link rel="stylesheet" href="styles.css">
+<title>Maintenance Tracker</title>
+</head>
+<body>
+<header class="top">
+  <div><p class="eyebrow">PERSONAL ORGANISER</p><h1>Maintenance</h1></div>
+  <button class="primary" id="addBtn">＋ Add task</button>
+</header>
+<main>
+  <section class="summary">
+    <div><span class="muted">Active tasks</span><strong id="taskCount">0</strong></div>
+    <div><span class="muted">Overdue</span><strong id="overdueCount" class="red">0</strong></div>
+    <div><span class="muted">Completed</span><strong id="completionCount">0</strong></div>
+  </section>
+  <div class="toolbar">
+    <h2>Your tasks</h2>
+    <select id="filter" aria-label="Filter tasks">
+      <option value="all">All tasks</option><option value="due">Due soon</option>
+      <option value="overdue">Overdue</option><option value="ontrack">On track</option>
+    </select>
+  </div>
+  <section id="taskList" class="task-list"></section>
+  <p id="empty" class="empty">No maintenance tasks yet. Add your first task to get started.</p>
+</main>
+
+<dialog id="taskDialog">
+  <form id="taskForm">
+    <div class="dialog-head"><h2 id="dialogTitle">Add maintenance task</h2><button type="button" class="icon-btn" id="closeDialog" aria-label="Close">×</button></div>
+    <input type="hidden" id="taskId">
+    <label>Task name<input id="name" maxlength="90" placeholder="e.g. Clean air conditioner filters" required></label>
+    <label>Category <input id="category" maxlength="40" placeholder="e.g. Appliances"></label>
+    <div class="interval-row">
+      <label>Repeat every<input id="interval" type="number" min="1" max="9999" value="6" required></label>
+      <label>Unit<select id="unit"><option value="days">Days</option><option value="weeks">Weeks</option><option value="months" selected>Months</option><option value="years">Years</option></select></label>
+    </div>
+    <label>Last completed<input id="lastDone" type="date" required></label>
+    <label>Notes <textarea id="notes" rows="3" maxlength="500" placeholder="Optional details"></textarea></label>
+    <div class="form-actions"><button type="button" class="secondary" id="cancelBtn">Cancel</button><button class="primary" type="submit">Save task</button></div>
+  </form>
+</dialog>
+
+<dialog id="detailDialog">
+  <div class="dialog-head"><h2 id="detailTitle">Task details</h2><button class="icon-btn" id="closeDetail" aria-label="Close">×</button></div>
+  <div id="detailBody"></div>
+  <div class="form-actions wrap">
+    <button class="secondary" id="editBtn">Edit</button>
+    <button class="danger-outline" id="deleteBtn">Delete</button>
+    <button class="primary" id="completeBtn">Task complete</button>
+  </div>
+</dialog>
+<script src="app.js"></script>
+</body>
+</html>
